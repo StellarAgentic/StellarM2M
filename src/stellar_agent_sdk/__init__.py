@@ -1,2 +1,3 @@
-def hello() -> str:
-    return "Hello from stellar-agent-sdk!"
+from .wallet import AgentWallet
+
+__all__ = ["AgentWallet"]

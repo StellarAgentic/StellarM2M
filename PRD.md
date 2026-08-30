@@ -19,20 +19,26 @@ By providing the agent with a programmable Soroban wallet (via a Stellar Secret 
 * **Data Merchants:** Companies exposing premium APIs who want to monetize on a pay-per-call basis without dealing with traditional fiat payment processors.
 
 ### 5. Minimum Viable Product (MVP) Scope (Week 1)
-The MVP will prove the core concept using Testnet XLM and consist of three primary files:
+The MVP will prove the core concept using Testnet XLM and consist of the following:
 * **`wallet.py`**: Contains the `AgentWallet` class. Responsible for securely holding the agent's Secret Key, connecting to the Testnet Horizon server, and fetching native XLM balances.
 * **`interceptor.py`**: Contains the `PaywallInterceptor` middleware for `httpx`. Responsible for catching `402 Payment Required` errors and triggering the wallet payment.
-* **`demo.py`**: A 15-line script that mocks a merchant API, demonstrating the entire flow for grant reviewers to instantly validate the technology.
+* **`demo.py`**: An end-to-end example that simulates a full agent-to-merchant payment cycle on the Stellar Testnet, serving as both a developer quickstart and a functional integration test.
+* **Friendbot Integration & CLI**: Automatic Testnet funding logic and a `stellar-agent fund` CLI tool for instant developer onboarding.
 
 ### 6. Phase 2 Features (Weeks 2-3)
 * **USDC Integration:** Automatically establish Trustlines so agents can transact in stable US Dollars instead of volatile native tokens.
 * **Soroban Smart Contracts:** Route payments through a dedicated escrow or settlement contract rather than basic peer-to-peer transfers.
 * **LangChain/OpenAI Integration:** Create wrappers so the SDK can be injected directly into popular AI agent frameworks.
+* **Merchant Rate Limiting:** Built-in safeguards to prevent runaway spending on specific endpoints.
+* **Webhooks & Transaction History:** Automated event emission for successful payments and persistent spending logs.
 
 ### 7. Phase 3: Ecosystem Growth (Months 2-3)
+* **Merchant SDK:** A drop-in middleware (Flask/FastAPI) allowing data providers to accept agent payments effortlessly (the "Seller" side).
+* **MCP Server Integration:** Model Context Protocol support so AI agents can dynamically discover the SDK as an available tool.
 * **Multi-Chain Support:** Extend beyond Stellar to support cross-chain payments (e.g., Ethereum L2s via bridges), allowing agents to pay merchants on any blockchain.
 * **Agent Marketplace:** A public registry where data merchants can list their paid APIs and agents can automatically discover, compare pricing, and select the cheapest provider.
 * **Spending Analytics Dashboard:** A web-based UI where developers can monitor their agents' real-time spending, transaction history, and set budget alerts.
+* **Interactive Documentation:** A comprehensive documentation site featuring an interactive API playground.
 * **Community & Governance:** Launch an open-source contributor program with bounties for new integrations (e.g., Anthropic Claude, Google ADK, Microsoft AutoGen).
 
 ### 8. Success Metrics
