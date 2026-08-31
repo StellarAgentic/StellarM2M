@@ -12,6 +12,35 @@
 >
 > Agentic commerce infrastructure for Stellar: Give your AI agents a programmable wallet in two lines of code to negotiate, pay, and settle machine-to-machine transactions instantly.
 
+
+## 🚦 Getting Started
+
+### Prerequisites
+- Python 3.10+
+- `uv` package manager (recommended for lightning-fast installation)
+- A Stellar Testnet account (the SDK can auto-generate this for you)
+
+### Installation
+
+You can install the SDK using `uv` (recommended) or standard `pip`:
+
+```bash
+# Using uv (recommended)
+uv pip install stellar-agent-sdk
+
+# Using standard pip
+pip install stellar-agent-sdk
+```
+
+### Environment Setup
+
+Create a `.env` file in the root of your project to store your agent's secret key safely. **Never commit this file to version control.**
+
+```env
+STELLAR_SECRET_KEY=S_YOUR_SECRET_KEY_HERE
+STELLAR_NETWORK=TESTNET
+```
+
 ## 🚀 Quickstart
 
 Here is how easy it is to give your AI agent financial autonomy:
@@ -210,6 +239,64 @@ sequenceDiagram
 
 ---
 
+
+## 📊 Current Status & Active Development
+
+**Milestone**: M1 - Core Wallet Infrastructure 🟢 **IN PROGRESS**  
+**Current focus**: AgentWallet implementation, PaywallInterceptor middleware, and basic Testnet transactions.  
+**Status**: 🎯 **Actively seeking contributors** | **Pre-Alpha**
+
+### ✅ Recent Progress (Phase 1.1)
+- Project scaffolding with `uv` complete
+- Initial `AgentWallet` class structure defined
+- Keypair generation and balance querying tested
+
+### 🔥 Active Development Areas (Help Wanted!)
+We are currently building out the core infrastructure and need help with:
+
+1. **PaywallInterceptor Middleware** 🛡️
+   - Implement `httpx` middleware to detect 402 Payment Required errors
+   - Automatic retry logic after payment
+   - *Skills: Python, httpx, async programming*
+
+2. **Transaction Building** 💸
+   - Implement the actual Stellar transaction submission in `AgentWallet.pay()`
+   - Handle testnet funding via Friendbot
+   - *Skills: Stellar Python SDK, Blockchain*
+
+3. **Rate Limiting & Safety Controls** 🚦
+   - Build per-merchant spending limits to prevent agent overspending
+   - *Skills: Python, Security design*
+
+**👉 Ready to contribute?** Check our [Issues](https://github.com/StellarAgentic/stellar-agent-sdk/issues) page for tasks tagged by difficulty level.
+
+
+## 📦 Project Structure (Projected)
+
+Here is the planned repository layout as we complete Phases 1-3 of our Roadmap:
+
+```text
+stellar-agent-sdk/
+├── src/                  # Core Agent SDK source code (Phase 1)
+│   └── stellar_agent_sdk/
+│       ├── __init__.py
+│       ├── wallet.py     # AgentWallet & Keypair management
+│       ├── interceptor.py# httpx PaywallInterceptor (402 handling)
+│       └── limits.py     # Per-merchant spending caps & rate limits
+├── contracts/            # Soroban Smart Contracts (Phase 2)
+│   └── escrow/           # On-chain escrow and settlement logic
+├── merchant_sdk/         # Tools for Data Providers (Phase 3)
+│   ├── flask/            # Flask middleware for merchants
+│   └── fastapi/          # FastAPI middleware for merchants
+├── cli/                  # CLI tools for developers (Phase 1)
+│   └── fund.py           # e.g., `stellar-agent fund` via Friendbot
+├── sandbox/              # Educational exercises & tutorials
+├── tests/                # Unit test suite (pytest)
+├── pyproject.toml        # uv package configuration & dependencies
+├── PRD.md                # Product Requirements Document
+└── README.md             # This file
+```
+
 ## 🗺️ Roadmap
 
 ### 🏗️ Phase 1: Core Infrastructure *(Current — Weeks 1-2)*
@@ -242,6 +329,76 @@ sequenceDiagram
 > For full technical details, see the [Product Requirements Document (PRD)](./PRD.md).
 
 ---
+
+
+## 🔐 Security & Audits
+
+Security is paramount when giving AI agents access to funds. 
+
+- **Non-Custodial Design**: The SDK requires your Secret Key to sign transactions, but it **never** stores it, caches it, or transmits it over the network. All cryptographic signing happens locally in your machine's memory.
+- **Spending Limits**: The `PaywallInterceptor` enforces hard caps on spending (e.g., `max_spend_usdc=10.0`) to ensure a rogue agent cannot drain a wallet.
+- **Audit Status**: We are currently in Phase 1 (Pre-Alpha). Do **NOT** use this SDK on Stellar Mainnet with real funds until our external Soroban smart contract audit is complete (scheduled for Phase 3).
+
+To report a vulnerability, please open a GitHub issue labelled `security` rather than disclosing it publicly.
+
+
+## 🎯 Vision
+
+Our goal is to make **Stellar the undisputed settlement layer for AI agent commerce**. 
+
+By giving autonomous agents their own non-custodial bank accounts, we are paving the way for a future where machines can seamlessly negotiate, pay, and settle transactions with each other at the speed of light. 
+
+### Impact on the Stellar Ecosystem
+- **For Traders & Users**: AI agents can manage sub-accounts, execute micro-trades, and pay for services autonomously without exposing the user's main wallet.
+- **For Developers**: Drop-in Python SDKs and middleware that make it trivial to monetize APIs for machine consumption.
+- **For DeFi Projects**: A new paradigm of "Agentic DeFi" where LangChain or CrewAI agents can interact with Soroban smart contracts directly to find the best yields or execute cross-chain arbitrage.
+- **For the Ecosystem**: Millions of daily micro-transactions generated by AI agents, solidifying Stellar as the highest-throughput, lowest-fee network for machine-to-machine value transfer.
+
+
+## 🏆 Recognition & Community
+
+This project is built from the ground up for the **Stellar open-source ecosystem**. While we are currently in the early stages, we are actively preparing to participate in major community initiatives:
+
+- **Stellar Community Fund (SCF)**: We are aggressively building towards a submission for upcoming SCF rounds to accelerate our roadmap.
+- **Community-Driven**: Built transparently in public, for developers, by developers. We actively encourage and reward community PRs.
+- **Open-Source Infrastructure**: Designed to be a core public good for the Stellar AI ecosystem, completely free and open for anyone to use.
+
+
+## 📄 License
+
+## 🔗 Resources
+
+We want to give you all the tools you need to build the next generation of agentic commerce. Here are the most important resources for working with the Stellar Agent SDK:
+
+**Internal Project Resources:**
+- [Product Requirements Document (PRD)](PRD.md)
+- [Interactive Python Sandbox (Exercises)](sandbox/)
+- [Contributing Guidelines](#-contributing-we-love-prs)
+
+**Stellar & Soroban Ecosystem:**
+- [Stellar Developer Documentation](https://developers.stellar.org/)
+- [Stellar Python SDK GitHub](https://github.com/StellarCN/py-stellar-base)
+- [Soroban Smart Contracts Documentation](https://soroban.stellar.org/)
+- [Horizon API Reference](https://developers.stellar.org/api/horizon)
+- [Friendbot Testnet Faucet](https://laboratory.stellar.org/#txbuilder?network=test)
+
+**AI Agent Frameworks:**
+- [LangChain Python Docs](https://python.langchain.com/)
+- [CrewAI Documentation](https://docs.crewai.com/)
+- [Microsoft AutoGen Docs](https://microsoft.github.io/autogen/)
+
+---
+
+## 📞 Support & Community
+
+Building something cool? Running into issues? We want to hear from you!
+
+- **Bug Reports & Feature Requests**: [GitHub Issues](https://github.com/StellarAgentic/stellar-agent-sdk/issues)
+- **General Questions & Idea Brainstorming**: [GitHub Discussions](https://github.com/StellarAgentic/stellar-agent-sdk/discussions)
+- **Stellar Developer Discord**: Join the [Stellar Discord](https://discord.gg/stellardev) to connect with the broader ecosystem!
+
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## 🤝 Contributing (We love PRs!)
 
