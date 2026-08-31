@@ -1,10 +1,18 @@
 # Stellar Agent SDK
 
+
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-orange.svg)](https://www.python.org/downloads/)
+[![Stellar Enabled](https://img.shields.io/badge/stellar-enabled-purple.svg)](https://stellar.org/)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/StellarAgentic/stellar-agent-sdk/issues)
+
+> 🌟 **Actively seeking contributors!** We're building critical infrastructure for the Stellar ecosystem and need help from developers of all skill levels. Check out our [open issues](https://github.com/StellarAgentic/stellar-agent-sdk/issues) to get started.
+
 > **Giving autonomous robots their own bank accounts.**
 >
 > Agentic commerce infrastructure for Stellar: Give your AI agents a programmable wallet in two lines of code to negotiate, pay, and settle machine-to-machine transactions instantly.
 
-## Quickstart
+## 🚀 Quickstart
 
 Here is how easy it is to give your AI agent financial autonomy:
 
@@ -34,9 +42,9 @@ We are building the foundational infrastructure for **Agentic Commerce** on Stel
 2. **The Seller (Phase 2):** A drop-in Merchant SDK for data providers to easily accept agent payments without dealing with fiat gateways or invoicing.
 3. **The Marketplace (Phase 3):** A public registry where agents can dynamically discover APIs, negotiate prices, and pay cross-chain, turning Stellar into the definitive settlement layer for the AI economy.
 
-## Architecture (How it Works)
+## 🏗️ Architecture (How it Works)
 
-### System Overview
+### 🌐 System Overview
 
 The SDK is a modular Python library with distinct layers that handle wallet management, payment negotiation, and framework integrations.
 
@@ -89,7 +97,7 @@ graph TB
     MS --> HZ
 ```
 
-### Payment Flow (Core Sequence)
+### 💸 Payment Flow (Core Sequence)
 
 The SDK intercepts API requests that require payment (402 errors), pays the merchant automatically via the Stellar network, and retries the request with the payment receipt.
 
@@ -125,7 +133,7 @@ sequenceDiagram
     WH-->>WH: Log to Transaction History
 ```
 
-### Merchant Integration Flow
+### 🏪 Merchant Integration Flow
 
 For data providers who want to accept agent payments using the Merchant SDK.
 
@@ -155,9 +163,9 @@ sequenceDiagram
     SDK-->>A: Return Data
 ```
 
-## Key Features
+## ✨ Key Features
 
-### For AI Developers
+### 🤖 For AI Developers
 * **Two-line setup** — Initialize a wallet and start paying for APIs in seconds
 * **Non-custodial** — The SDK never stores or transmits your Secret Key; signing happens locally
 * **Automatic 402 handling** — The PaywallInterceptor catches payment errors and resolves them without the agent knowing
@@ -166,13 +174,13 @@ sequenceDiagram
 * **Framework agnostic** — Works with LangChain, CrewAI, AutoGen, or any Python-based agent
 * **Friendbot integration** — Auto-fund Testnet wallets for instant development setup
 
-### For Data Merchants
+### 📊 For Data Merchants
 * **Instant settlement** — Payments arrive in ~5 seconds on Stellar (vs. days on traditional rails)
 * **Micro-transaction friendly** — Charge $0.001 per API call with negligible fees
 * **Cryptographic receipts** — Every payment is verified on-chain via Transaction Hash
 * **Zero infrastructure** — No payment gateway, no Stripe dashboard, no invoicing. Just a Stellar address
 
-### Core Architecture
+### ⚙️ Core Architecture
 * **Built on `httpx` middleware** — Drop-in compatible with any existing Python HTTP workflow
 * **Stellar Horizon integration** — Real-time balance queries, transaction monitoring, and account management
 * **Environment-aware** — Seamlessly switch between Testnet and Mainnet with a single config change
@@ -180,9 +188,9 @@ sequenceDiagram
 
 ---
 
-## Technology Stack
+## 💻 Technology Stack
 
-### Core SDK (Phase 1)
+### 🛠️ Core SDK (Phase 1)
 | Layer | Technology | Why |
 |-------|-----------|-----|
 | **Language** | Python 3.10+ | Where 99% of AI agents live |
@@ -192,7 +200,7 @@ sequenceDiagram
 | **Testing** | `pytest` | Industry-standard Python testing |
 | **Network** | Stellar Testnet / Mainnet | Sub-5s finality, $0.00001 fees |
 
-### Planned Infrastructure (Phases 2 & 3)
+### 🔮 Planned Infrastructure (Phases 2 & 3)
 | Component | Planned Technology | Purpose |
 |-----------|--------------------|---------|
 | **Smart Contracts** | Rust (Soroban) | Secure on-chain escrow and settlement logic |
@@ -202,9 +210,9 @@ sequenceDiagram
 
 ---
 
-## Roadmap
+## 🗺️ Roadmap
 
-### Phase 1: Core Infrastructure *(Current — Weeks 1-2)*
+### 🏗️ Phase 1: Core Infrastructure *(Current — Weeks 1-2)*
 - [x] Project scaffolding with `uv`
 - [x] `AgentWallet` class (Keypair management, balance queries)
 - [ ] `PaywallInterceptor` middleware (402 detection, auto-retry)
@@ -213,7 +221,7 @@ sequenceDiagram
 - [ ] End-to-end demo on Stellar Testnet
 - [ ] Unit test suite with `pytest`
 
-### Phase 2: Production Features *(Weeks 3-4)*
+### 🚀 Phase 2: Production Features *(Weeks 3-4)*
 - [ ] USDC Trustline auto-establishment
 - [ ] Soroban smart contract integration for escrow payments
 - [ ] LangChain / OpenAI agent integration wrappers
@@ -222,7 +230,7 @@ sequenceDiagram
 - [ ] Rate-limiting per merchant (prevent runaway spending)
 - [ ] Robust error handling (insufficient funds, network timeouts)
 
-### Phase 3: Ecosystem Growth *(Months 2-3)*
+### 🌱 Phase 3: Ecosystem Growth *(Months 2-3)*
 - [ ] MCP (Model Context Protocol) server so AI agents can discover the SDK as a tool
 - [ ] Pre-built Merchant SDK (Flask/FastAPI middleware to accept agent payments)
 - [ ] Agent Marketplace — merchants list paid APIs, agents discover them automatically
@@ -235,11 +243,11 @@ sequenceDiagram
 
 ---
 
-## Contributing (We love PRs!)
+## 🤝 Contributing (We love PRs!)
 
 We want to make it ridiculously easy for you to build on top of `stellar-agent-sdk`. We use `uv` for lightning-fast Python package management.
 
-### Local Setup
+### 🛠️ Local Setup
 
 1. **Clone the repository:**
    ```bash
