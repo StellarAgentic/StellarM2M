@@ -245,7 +245,7 @@ function App() {
       {/* Background Video (Hybrid Tracking) */}
       <video
         ref={videoRef}
-        src="/bg-video-smooth.mp4"
+        src="./bg-video-smooth.mp4"
         muted playsInline preload="auto" loop
         className="fixed inset-x-0 bottom-0 top-[10vh] md:top-[12vh] z-0 object-cover object-[50%_top] w-full h-full"
       />
