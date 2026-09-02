@@ -1,12 +1,12 @@
-# Stellar Agent SDK
+# StellarM2M
 
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-orange.svg)](https://www.python.org/downloads/)
 [![Stellar Enabled](https://img.shields.io/badge/stellar-enabled-purple.svg)](https://stellar.org/)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/StellarAgentic/stellar-agent-sdk/issues)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/StellarAgentic/stellar-m2m/issues)
 
-> 🌟 **Actively seeking contributors!** We're building critical infrastructure for the Stellar ecosystem and need help from developers of all skill levels. Check out our [open issues](https://github.com/StellarAgentic/stellar-agent-sdk/issues) to get started.
+> 🌟 **Actively seeking contributors!** We're building critical infrastructure for the Stellar ecosystem and need help from developers of all skill levels. Check out our [open issues](https://github.com/StellarAgentic/stellar-m2m/issues) to get started.
 
 > **Giving autonomous robots their own bank accounts.**
 >
@@ -26,10 +26,10 @@ You can install the SDK using `uv` (recommended) or standard `pip`:
 
 ```bash
 # Using uv (recommended)
-uv pip install stellar-agent-sdk
+uv pip install stellar-m2m
 
 # Using standard pip
-pip install stellar-agent-sdk
+pip install stellar-m2m
 ```
 
 ### Environment Setup
@@ -46,7 +46,7 @@ STELLAR_NETWORK=TESTNET
 Here is how easy it is to give your AI agent financial autonomy:
 
 ```python
-from stellar_agent_sdk import AgentWallet, PaywallInterceptor
+from stellar_m2m import AgentWallet, PaywallInterceptor
 
 # 1. Initialize your agent's autonomous wallet
 wallet = AgentWallet.from_secret("S_YOUR_SECRET_KEY") 
@@ -67,7 +67,7 @@ AI agents are becoming incredibly autonomous, but they hit a brick wall when int
 ### The Solution: A Two-Sided Agentic Economy
 We are building the foundational infrastructure for **Agentic Commerce** on Stellar. This goes beyond a simple Python wrapper:
 
-1. **The Buyer (Phase 1):** The `stellar-agent-sdk` bridges the immediate gap. By leveraging the speed and low fees of the Stellar network, this SDK allows any AI agent to spin up a programmable crypto wallet instantly and execute x402 micro-payments autonomously.
+1. **The Buyer (Phase 1):** The `stellar-m2m` bridges the immediate gap. By leveraging the speed and low fees of the Stellar network, this SDK allows any AI agent to spin up a programmable crypto wallet instantly and execute x402 micro-payments autonomously.
 2. **The Seller (Phase 2):** A drop-in Merchant SDK for data providers to easily accept agent payments without dealing with fiat gateways or invoicing.
 3. **The Marketplace (Phase 3):** A public registry where agents can dynamically discover APIs, negotiate prices, and pay cross-chain, turning Stellar into the definitive settlement layer for the AI economy.
 
@@ -86,7 +86,7 @@ graph TB
         MCP[MCP Server]
     end
 
-    subgraph "Stellar Agent SDK"
+    subgraph "StellarM2M"
         INT[PaywallInterceptor<br/>httpx middleware]
         WL[AgentWallet<br/>Keypair + Balance + Trustlines]
         TH[Transaction History<br/>Spending Reports]
@@ -169,7 +169,7 @@ For data providers who want to accept agent payments using the Merchant SDK.
 ```mermaid
 sequenceDiagram
     participant A as AI Agent (Buyer)
-    participant SDK as Stellar Agent SDK
+    participant SDK as StellarM2M
     participant MS as Merchant SDK (Seller)
     participant API as Merchant API
     participant S as Stellar Network
@@ -268,7 +268,7 @@ We are currently building out the core infrastructure and need help with:
    - Build per-merchant spending limits to prevent agent overspending
    - *Skills: Python, Security design*
 
-**👉 Ready to contribute?** Check our [Issues](https://github.com/StellarAgentic/stellar-agent-sdk/issues) page for tasks tagged by difficulty level.
+**👉 Ready to contribute?** Check our [Issues](https://github.com/StellarAgentic/stellar-m2m/issues) page for tasks tagged by difficulty level.
 
 
 ## 📦 Project Structure (Projected)
@@ -276,9 +276,9 @@ We are currently building out the core infrastructure and need help with:
 Here is the planned repository layout as we complete Phases 1-3 of our Roadmap:
 
 ```text
-stellar-agent-sdk/
+stellar-m2m/
 ├── src/                  # Core Agent SDK source code (Phase 1)
-│   └── stellar_agent_sdk/
+│   └── stellar_m2m/
 │       ├── __init__.py
 │       ├── wallet.py     # AgentWallet & Keypair management
 │       ├── interceptor.py# httpx PaywallInterceptor (402 handling)
@@ -368,7 +368,7 @@ This project is built from the ground up for the **Stellar open-source ecosystem
 
 ## 🔗 Resources
 
-We want to give you all the tools you need to build the next generation of agentic commerce. Here are the most important resources for working with the Stellar Agent SDK:
+We want to give you all the tools you need to build the next generation of agentic commerce. Here are the most important resources for working with the StellarM2M:
 
 **Internal Project Resources:**
 - [Product Requirements Document (PRD)](PRD.md)
@@ -393,8 +393,8 @@ We want to give you all the tools you need to build the next generation of agent
 
 Building something cool? Running into issues? We want to hear from you!
 
-- **Bug Reports & Feature Requests**: [GitHub Issues](https://github.com/StellarAgentic/stellar-agent-sdk/issues)
-- **General Questions & Idea Brainstorming**: [GitHub Discussions](https://github.com/StellarAgentic/stellar-agent-sdk/discussions)
+- **Bug Reports & Feature Requests**: [GitHub Issues](https://github.com/StellarAgentic/stellar-m2m/issues)
+- **General Questions & Idea Brainstorming**: [GitHub Discussions](https://github.com/StellarAgentic/stellar-m2m/discussions)
 - **Stellar Developer Discord**: Join the [Stellar Discord](https://discord.gg/stellardev) to connect with the broader ecosystem!
 
 
@@ -402,14 +402,14 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## 🤝 Contributing (We love PRs!)
 
-We want to make it ridiculously easy for you to build on top of `stellar-agent-sdk`. We use `uv` for lightning-fast Python package management.
+We want to make it ridiculously easy for you to build on top of `stellar-m2m`. We use `uv` for lightning-fast Python package management.
 
 ### 🛠️ Local Setup
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/StellarAgentic/stellar-agent-sdk.git
-   cd stellar-agent-sdk
+   git clone https://github.com/StellarAgentic/stellar-m2m.git
+   cd stellar-m2m
    ```
 
 2. **Sync dependencies:**

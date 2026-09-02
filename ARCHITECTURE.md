@@ -1,12 +1,12 @@
-# 🏗️ Stellar Agent SDK: Architecture Deep Dive
+# 🏗️ StellarM2M: Architecture Deep Dive
 
-This document provides a comprehensive overview of the technical architecture of the **Stellar Agent SDK**. It is designed for contributors, maintainers, and integrators who want to understand how the SDK operates under the hood.
+This document provides a comprehensive overview of the technical architecture of the **StellarM2M**. It is designed for contributors, maintainers, and integrators who want to understand how the SDK operates under the hood.
 
 ---
 
 ## 1. System Overview
 
-The Stellar Agent SDK acts as a bridge between **Autonomous AI Agents** (like LangChain or CrewAI) and the **Stellar Network**. It intercepts HTTP traffic to data providers (merchants), detects paywalls, and automatically negotiates micro-transactions on-chain so the agent can access paid APIs seamlessly.
+The StellarM2M acts as a bridge between **Autonomous AI Agents** (like LangChain or CrewAI) and the **Stellar Network**. It intercepts HTTP traffic to data providers (merchants), detects paywalls, and automatically negotiates micro-transactions on-chain so the agent can access paid APIs seamlessly.
 
 ### High-Level Architecture Diagram
 
@@ -19,7 +19,7 @@ graph TB
         MCP[MCP Server]
     end
 
-    subgraph "Stellar Agent SDK"
+    subgraph "StellarM2M"
         INT[PaywallInterceptor<br/>httpx middleware]
         WL[AgentWallet<br/>Keypair + Balance + Trustlines]
         TH[Transaction History<br/>Spending Reports]

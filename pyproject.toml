@@ -1,5 +1,5 @@
 [project]
-name = "stellar-agent-sdk"
+name = "stellar-m2m"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"

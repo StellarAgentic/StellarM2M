@@ -1,8 +1,8 @@
 # Product Requirements Document (PRD)
-## Stellar Agent SDK
+## StellarM2M
 
 ### 1. Executive Summary
-**Product Name:** Stellar Agent SDK
+**Product Name:** StellarM2M
 **Tagline:** Giving autonomous robots their own bank accounts.
 **Vision:** To provide seamless, agentic commerce infrastructure for the Stellar network, allowing AI agents to negotiate, pay, and settle machine-to-machine micro-transactions instantly without human intervention.
 
