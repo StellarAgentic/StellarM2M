@@ -7,7 +7,7 @@ function useTypewriter(text: string, speed = 38, startDelay = 600) {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
     let index = 0;
     
     timeout = setTimeout(() => {
@@ -167,19 +167,12 @@ function Section({ title, children, className = "", id = "" }: { title: string, 
 }
 
 function App() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  
   const videoRef = useRef<HTMLVideoElement>(null);
   
   const heroText = "Autonomously pay for the premium APIs and data your agents need. No credit cards, no KYC, no friction. Equip your LangChain and CrewAI agents with non-custodial Stellar wallets to settle HTTP 402 micro-transactions instantly.";
   const { displayed, done } = useTypewriter(heroText, 25, 400);
 
-  const handleWaitlistSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if(email) setSubmitted(true);
-  };
+
 
   useEffect(() => {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
