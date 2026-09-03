@@ -299,14 +299,43 @@ stellar-m2m/
 
 ## 🗺️ Roadmap
 
-### 🏗️ Phase 1: Core Infrastructure *(Current — Weeks 1-2)*
-- [x] Project scaffolding with `uv`
-- [x] `AgentWallet` class (Keypair management, balance queries)
-- [ ] `PaywallInterceptor` middleware (402 detection, auto-retry)
-- [ ] Automatic Testnet funding via Friendbot integration
-- [ ] CLI tool: `stellar-agent fund` to top up an agent wallet from the terminal
-- [ ] End-to-end demo on Stellar Testnet
-- [ ] Unit test suite with `pytest`
+### 🚀 Phase 1: Core Infrastructure *(Current — Weeks 1-2)*
+
+✅ **Project Scaffolding & Setup**
+  - Initialize the repository using `uv` for ultra-fast dependency management
+  - Configure `pyproject.toml` with necessary metadata and dependencies
+  - Setup ESLint and Prettier for the frontend dashboard
+
+✅ **Core `AgentWallet` Class**
+  - Implement secure Keypair generation and management
+  - Add native Stellar SDK balance querying capabilities
+  - Build cryptographic transaction signing functionality
+
+✅ **`PaywallInterceptor` Middleware (402 Handling)**
+  - Intercept out-bound HTTP requests from AI Agents
+  - Detect `402 Payment Required` HTTP response headers
+  - Extract payment amounts and destination addresses
+  - Automatically retry original requests upon successful payment
+
+✅ **Automatic Testnet Funding**
+  - Integrate with the Stellar Friendbot API
+  - Detect newly generated wallets with 0 balance
+  - Automatically fund them for testing purposes
+
+✅ **Developer CLI Tools**
+  - Build the `stellar-agent` command-line interface
+  - Implement `stellar-agent fund` to top up wallets from the terminal
+  - Implement `stellar-agent balance` to check agent funds quickly
+
+✅ **End-to-End Demo**
+  - Build a mock Merchant HTTP Server that enforces 402 errors
+  - Create a test script where an Agent successfully bypasses the paywall
+  - Document the E2E flow in the repository
+
+✅ **Unit Test Suite (`pytest`)**
+  - Write tests for Keypair generation and parsing
+  - Mock Horizon API responses for reliable balance tests
+  - Test the PaywallInterceptor retry mechanics extensively
 
 ### 🚀 Phase 2: Production Features *(Weeks 3-4)*
 
