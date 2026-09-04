@@ -302,114 +302,114 @@ stellar-m2m/
 ### 🚀 Phase 1: Core Infrastructure *(Current — Weeks 1-2)*
 
 ✅ **Project Scaffolding & Setup**
-  - Initialize the repository using `uv` for ultra-fast dependency management
-  - Configure `pyproject.toml` with necessary metadata and dependencies
-  - Setup ESLint and Prettier for the frontend dashboard
+  - ✅ Initialize the repository using `uv` for ultra-fast dependency management
+  - ✅ Configure `pyproject.toml` with necessary metadata and dependencies
+  - ✅ Setup ESLint and Prettier for the frontend dashboard
 
 ✅ **Core `AgentWallet` Class**
-  - Implement secure Keypair generation and management
-  - Add native Stellar SDK balance querying capabilities
-  - Build cryptographic transaction signing functionality
+  - ✅ Implement secure Keypair generation and management
+  - ✅ Add native Stellar SDK balance querying capabilities
+  - ✅ Build cryptographic transaction signing functionality
 
-✅ **`PaywallInterceptor` Middleware (402 Handling)**
-  - Intercept out-bound HTTP requests from AI Agents
-  - Detect `402 Payment Required` HTTP response headers
-  - Extract payment amounts and destination addresses
-  - Automatically retry original requests upon successful payment
+[ ] **`PaywallInterceptor` Middleware (402 Handling)**
+  - [ ] Intercept out-bound HTTP requests from AI Agents
+  - [ ] Detect `402 Payment Required` HTTP response headers
+  - [ ] Extract payment amounts and destination addresses
+  - [ ] Automatically retry original requests upon successful payment
 
-✅ **Automatic Testnet Funding**
-  - Integrate with the Stellar Friendbot API
-  - Detect newly generated wallets with 0 balance
-  - Automatically fund them for testing purposes
+[ ] **Automatic Testnet Funding**
+  - [ ] Integrate with the Stellar Friendbot API
+  - [ ] Detect newly generated wallets with 0 balance
+  - [ ] Automatically fund them for testing purposes
 
-✅ **Developer CLI Tools**
-  - Build the `stellar-agent` command-line interface
-  - Implement `stellar-agent fund` to top up wallets from the terminal
-  - Implement `stellar-agent balance` to check agent funds quickly
+[ ] **Developer CLI Tools**
+  - [ ] Build the `stellar-agent` command-line interface
+  - [ ] Implement `stellar-agent fund` to top up wallets from the terminal
+  - [ ] Implement `stellar-agent balance` to check agent funds quickly
 
-✅ **End-to-End Demo**
-  - Build a mock Merchant HTTP Server that enforces 402 errors
-  - Create a test script where an Agent successfully bypasses the paywall
-  - Document the E2E flow in the repository
+[ ] **End-to-End Demo**
+  - [ ] Build a mock Merchant HTTP Server that enforces 402 errors
+  - [ ] Create a test script where an Agent successfully bypasses the paywall
+  - [ ] Document the E2E flow in the repository
 
-✅ **Unit Test Suite (`pytest`)**
-  - Write tests for Keypair generation and parsing
-  - Mock Horizon API responses for reliable balance tests
-  - Test the PaywallInterceptor retry mechanics extensively
+[ ] **Unit Test Suite (`pytest`)**
+  - [ ] Write tests for Keypair generation and parsing
+  - [ ] Mock Horizon API responses for reliable balance tests
+  - [ ] Test the PaywallInterceptor retry mechanics extensively
 
 ### 🚀 Phase 2: Production Features *(Weeks 3-4)*
 
-✅ **USDC Trustline Auto-Establishment**
-  - Detect missing trustlines automatically before sending payments
-  - Build and sign `change_trust` operations seamlessly
-  - Manage minimum XLM balance requirements for trustline reserves
+[ ] **USDC Trustline Auto-Establishment**
+  - [ ] Detect missing trustlines automatically before sending payments
+  - [ ] Build and sign `change_trust` operations seamlessly
+  - [ ] Manage minimum XLM balance requirements for trustline reserves
 
-✅ **Soroban Smart Contract Integration**
-  - Write the core escrow smart contract in Rust (deposits, spending allowances)
-  - Deploy the escrow contract to the Stellar Testnet
-  - Add native Python SDK bindings to interact with contract functions
+[ ] **Soroban Smart Contract Integration**
+  - [ ] Write the core escrow smart contract in Rust (deposits, spending allowances)
+  - [ ] Deploy the escrow contract to the Stellar Testnet
+  - [ ] Add native Python SDK bindings to interact with contract functions
 
-✅ **LangChain & OpenAI Agent Wrappers**
-  - Create a LangChain `BaseTool` for funding the agent wallet
-  - Create a LangChain `BaseTool` for executing micro-payments
-  - Design OpenAI-compatible function-calling JSON schemas for transactions
+[ ] **LangChain & OpenAI Agent Wrappers**
+  - [ ] Create a LangChain `BaseTool` for funding the agent wallet
+  - [ ] Create a LangChain `BaseTool` for executing micro-payments
+  - [ ] Design OpenAI-compatible function-calling JSON schemas for transactions
 
-✅ **Webhook Notifications & Events**
-  - Implement FastAPI/Flask endpoint templates for merchant servers
-  - Create a background event listener for successful on-chain transactions
-  - Send HTTP POST webhooks to notify merchants of payment completion
+[ ] **Webhook Notifications & Events**
+  - [ ] Implement FastAPI/Flask endpoint templates for merchant servers
+  - [ ] Create a background event listener for successful on-chain transactions
+  - [ ] Send HTTP POST webhooks to notify merchants of payment completion
 
-✅ **Transaction History & Spending Reports**
-  - Fetch detailed transaction history from the Horizon API
-  - Parse and format payment operations into clean Python dictionaries
-  - Generate exportable CSV/JSON spending reports on a per-agent basis
+[ ] **Transaction History & Spending Reports**
+  - [ ] Fetch detailed transaction history from the Horizon API
+  - [ ] Parse and format payment operations into clean Python dictionaries
+  - [ ] Generate exportable CSV/JSON spending reports on a per-agent basis
 
-✅ **Rate-Limiting & Safety Controls**
-  - Define a storage interface for tracking spending limits (In-Memory/Redis)
-  - Add pre-flight balance and limit checks before transaction submission
-  - Enforce per-merchant spending caps to prevent runaway agent spending
+[ ] **Rate-Limiting & Safety Controls**
+  - [ ] Define a storage interface for tracking spending limits (In-Memory/Redis)
+  - [ ] Add pre-flight balance and limit checks before transaction submission
+  - [ ] Enforce per-merchant spending caps to prevent runaway agent spending
 
-✅ **Robust Error Handling**
-  - Map native Horizon API error codes to custom Python Exceptions
-  - Implement exponential backoff and retry logic for network timeouts
-  - Provide human-readable, actionable error messages (e.g., Insufficient Funds)
+[ ] **Robust Error Handling**
+  - [ ] Map native Horizon API error codes to custom Python Exceptions
+  - [ ] Implement exponential backoff and retry logic for network timeouts
+  - [ ] Provide human-readable, actionable error messages (e.g., Insufficient Funds)
 
 ### 🚀 Phase 3: Ecosystem Growth *(Months 2-3)*
 
-✅ **MCP (Model Context Protocol) Server**
-  - Implement a standard MCP server for Anthropic/Claude integration
-  - Allow AI agents to dynamically discover the Stellar SDK as a tool
-  - Build natural language prompt-to-payment flows
+[ ] **MCP (Model Context Protocol) Server**
+  - [ ] Implement a standard MCP server for Anthropic/Claude integration
+  - [ ] Allow AI agents to dynamically discover the Stellar SDK as a tool
+  - [ ] Build natural language prompt-to-payment flows
 
-✅ **Pre-built Merchant SDKs**
-  - Publish a plug-and-play Flask middleware package for merchants
-  - Publish a FastAPI dependency injection package for async API endpoints
-  - Provide Docker compose templates for one-click merchant deployment
+[ ] **Pre-built Merchant SDKs**
+  - [ ] Publish a plug-and-play Flask middleware package for merchants
+  - [ ] Publish a FastAPI dependency injection package for async API endpoints
+  - [ ] Provide Docker compose templates for one-click merchant deployment
 
-✅ **Agent API Marketplace**
-  - Build a decentralized registry of paid APIs on Soroban
-  - Create a frontend interface for merchants to list their API endpoints and prices
-  - Enable agents to automatically discover and connect to new APIs based on their tasks
+[ ] **Agent API Marketplace**
+  - [ ] Build a decentralized registry of paid APIs on Soroban
+  - [ ] Create a frontend interface for merchants to list their API endpoints and prices
+  - [ ] Enable agents to automatically discover and connect to new APIs based on their tasks
 
-✅ **Multi-Chain Interoperability**
-  - Research bridging mechanisms for Ethereum L2s (Base, Arbitrum)
-  - Allow agents to hold USDC on L2s and settle on Stellar via cross-chain swaps
-  - Abstract the bridging complexities away from the agent developer
+[ ] **Multi-Chain Interoperability**
+  - [ ] Research bridging mechanisms for Ethereum L2s (Base, Arbitrum)
+  - [ ] Allow agents to hold USDC on L2s and settle on Stellar via cross-chain swaps
+  - [ ] Abstract the bridging complexities away from the agent developer
 
-✅ **Spending Analytics Dashboard**
-  - Create a React dashboard for developers to visualize agent spending
-  - Implement real-time charting for API consumption and budget burn rates
-  - Add alerting systems (email/Discord) when an agent nears its spending limit
+[ ] **Spending Analytics Dashboard**
+  - [ ] Create a React dashboard for developers to visualize agent spending
+  - [ ] Implement real-time charting for API consumption and budget burn rates
+  - [ ] Add alerting systems (email/Discord) when an agent nears its spending limit
 
-✅ **Interactive Developer Documentation**
-  - Launch a comprehensive Docusaurus-based documentation site
-  - Include an interactive API playground for testing SDK functions in-browser
-  - Publish step-by-step tutorials for building your first autonomous agent
+[ ] **Interactive Developer Documentation**
+  - [ ] Launch a comprehensive Docusaurus-based documentation site
+  - [ ] Include an interactive API playground for testing SDK functions in-browser
+  - [ ] Publish step-by-step tutorials for building your first autonomous agent
 
-✅ **Community Bounty Program**
-  - Launch an official Grants/Bounty page using GrantFox and Drips
-  - Reward community members for building new integrations and fixing bugs
-  - Establish a developer DAO for voting on feature priorities
+[ ] **Community Bounty Program**
+  - [ ] Launch an official Grants/Bounty page using GrantFox and Drips
+  - [ ] Reward community members for building new integrations and fixing bugs
+  - [ ] Establish a developer DAO for voting on feature priorities
 
 > For full technical details, see the [Product Requirements Document (PRD)](./PRD.md).
 
