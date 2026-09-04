@@ -247,25 +247,25 @@ sequenceDiagram
 **Status**: 🎯 **Actively seeking contributors** | **Pre-Alpha**
 
 ### ✅ Recent Progress (Phase 1.1)
-- Project scaffolding with `uv` complete
-- Initial `AgentWallet` class structure defined
-- Keypair generation and balance querying tested
+  - ✅ Project scaffolding with `uv` complete
+  - ✅ Initial `AgentWallet` class structure defined
+  - ✅ Keypair generation and balance querying tested
 
 ### 🔥 Active Development Areas (Help Wanted!)
 We are currently building out the core infrastructure and need help with:
 
-1. **PaywallInterceptor Middleware** 🛡️
-   - Implement `httpx` middleware to detect 402 Payment Required errors
-   - Automatic retry logic after payment
+[ ] **PaywallInterceptor Middleware** 🛡️
+   - [ ] Implement `httpx` middleware to detect 402 Payment Required errors
+   - [ ] Automatic retry logic after payment
    - *Skills: Python, httpx, async programming*
 
-2. **Transaction Building** 💸
-   - Implement the actual Stellar transaction submission in `AgentWallet.pay()`
-   - Handle testnet funding via Friendbot
+[ ] **Transaction Building** 💸
+   - [ ] Implement the actual Stellar transaction submission in `AgentWallet.pay()`
+   - [ ] Handle testnet funding via Friendbot
    - *Skills: Stellar Python SDK, Blockchain*
 
-3. **Rate Limiting & Safety Controls** 🚦
-   - Build per-merchant spending limits to prevent agent overspending
+[ ] **Rate Limiting & Safety Controls** 🚦
+   - [ ] Build per-merchant spending limits to prevent agent overspending
    - *Skills: Python, Security design*
 
 **👉 Ready to contribute?** Check our [Issues](https://github.com/StellarAgentic/stellar-m2m/issues) page for tasks tagged by difficulty level.
