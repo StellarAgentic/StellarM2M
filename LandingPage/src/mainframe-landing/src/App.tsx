@@ -167,6 +167,25 @@ function Section({ title, children, className = "", id = "" }: { title: string, 
 }
 
 function App() {
+  const [activeModal, setActiveModal] = useState<string | null>(null);
+
+  const Modal = ({ title, children, isOpen, onClose }: any) => {
+    if (!isOpen) return null;
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div className="bg-[#111] border border-white/10 p-6 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto relative shadow-2xl">
+          <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+          <h2 className="text-2xl font-bold text-white mb-4">{title}</h2>
+          <div className="text-gray-300 space-y-4 text-sm leading-relaxed">
+            {children}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const videoRef = useRef<HTMLVideoElement>(null);
   
   const heroText = "Autonomously pay for the premium APIs and data your agents need. No credit cards, no KYC, no friction. Equip your LangChain and CrewAI agents with non-custodial Stellar wallets to settle HTTP 402 micro-transactions instantly.";
@@ -406,7 +425,50 @@ function App() {
           </div>
         </Section>
 
-      </main>
+      
+        {/* FOOTER */}
+        <footer className="border-t border-white/10 py-8 mt-12 bg-black/40">
+          <div className="max-w-6xl mx-auto px-6 flex flex-wrap justify-center gap-8 text-sm text-gray-500">
+            <button onClick={() => setActiveModal('tos')} className="hover:text-white transition-colors">Terms of Service</button>
+            <button onClick={() => setActiveModal('privacy')} className="hover:text-white transition-colors">Privacy Policy</button>
+            <button onClick={() => setActiveModal('disclaimer')} className="hover:text-white transition-colors">Web3 Disclaimer</button>
+            <button onClick={() => setActiveModal('license')} className="hover:text-white transition-colors">License</button>
+            <button onClick={() => setActiveModal('contact')} className="hover:text-white transition-colors">Contact</button>
+          </div>
+        </footer>
+
+        {/* MODALS */}
+        <Modal title="Terms of Service" isOpen={activeModal === 'tos'} onClose={() => setActiveModal(null)}>
+          <p>By using the StellarM2M SDK, you agree to our terms. This software is provided for developers to build autonomous agent payment systems.</p>
+          <p>You are solely responsible for ensuring your AI agents operate within acceptable use policies and do not violate any laws.</p>
+        </Modal>
+
+        <Modal title="Privacy Policy" isOpen={activeModal === 'privacy'} onClose={() => setActiveModal(null)}>
+          <p>We do not collect personal data from your agents. The StellarM2M SDK operates locally on your machine and communicates directly with the Stellar network.</p>
+          <p>Any telemetry or usage data collected by the landing page is purely for analytics and is fully anonymized.</p>
+        </Modal>
+
+        <Modal title="Web3 Disclaimer (Crucial)" isOpen={activeModal === 'disclaimer'} onClose={() => setActiveModal(null)}>
+          <p className="text-red-400 font-bold mb-2">WARNING: NON-CUSTODIAL SOFTWARE</p>
+          <p>StellarM2M is a non-custodial SDK. We do not have access to your secret keys, and we cannot recover lost funds.</p>
+          <p>You are fully responsible for the actions of your AI agents. If your agent makes unauthorized payments due to misconfiguration, the maintainers are <strong>not liable for any lost funds</strong>.</p>
+          <p>Always test extensively on the Stellar Testnet before providing your agents with Mainnet funds.</p>
+        </Modal>
+
+        <Modal title="Open-Source License" isOpen={activeModal === 'license'} onClose={() => setActiveModal(null)}>
+          <p>StellarM2M is released under the <strong>MIT License</strong>.</p>
+          <p>You are free to use, modify, and distribute this software in commercial and non-commercial projects, provided the original copyright notice is included.</p>
+        </Modal>
+
+        <Modal title="Contact & Support" isOpen={activeModal === 'contact'} onClose={() => setActiveModal(null)}>
+          <p>Need help integrating StellarM2M? Found a bug?</p>
+          <ul className="list-disc pl-5 mt-4 space-y-3">
+            <li><strong>GitHub:</strong> <a href="https://github.com/StellarAgentic/StellarM2M/issues" target="_blank" rel="noreferrer" className="text-blue-400 hover:underline">Open an Issue</a></li>
+            <li><strong>Discord:</strong> Join the <a href="https://discord.gg/stellardev" target="_blank" rel="noreferrer" className="text-blue-400 hover:underline">Stellar Developer Discord</a></li>
+            <li><strong>Email:</strong> <a href="mailto:adeoladavid176@gmail.com" className="text-blue-400 hover:underline">adeoladavid176@gmail.com</a></li>
+          </ul>
+        </Modal>
+        </main>
     </div>
   );
 }
