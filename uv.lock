@@ -527,7 +527,7 @@ wheels = [
 ]
 
 [[package]]
-name = "stellar-agent-sdk"
+name = "stellar-m2m"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
