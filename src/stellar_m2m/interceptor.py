@@ -31,3 +31,7 @@ class PaywallInterceptor(httpx.Auth):
             except Exception as e:
                 print(f"Warning: Payment failed: {e}")
                 return
+            
+            from stellar_m2m.constants import HEADER_TX_HASH
+            request.headers[HEADER_TX_HASH] = tx_hash
+            yield request

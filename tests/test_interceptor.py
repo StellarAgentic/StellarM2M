@@ -38,7 +38,9 @@ async def test_interceptor_detects_402(httpx_mock: HTTPXMock, capsys, monkeypatc
     """
     mock_url = "https://api.mock-merchant.com/data"
     
-    # Configure the mock to return 402
+    from stellar_m2m.constants import HEADER_TX_HASH
+    
+    # Configure the mock to return 402 on the first request
     httpx_mock.add_response(
         url=mock_url,
         status_code=402,
@@ -48,14 +50,23 @@ async def test_interceptor_detects_402(httpx_mock: HTTPXMock, capsys, monkeypatc
         }
     )
     
+    # Configure the mock to return 200 on the second request (when retry happens with the hash)
+    httpx_mock.add_response(
+        url=mock_url,
+        status_code=200,
+        match_headers={HEADER_TX_HASH: "mock_tx_hash"}
+    )
+    
     class MockWallet:
         async def pay(self, amount, destination):
             return "mock_tx_hash"
             
     # Make a request using the client WITH the interceptor attached
     async with httpx.AsyncClient(auth=PaywallInterceptor(wallet=MockWallet())) as client:
-        await client.get(mock_url)
+        response = await client.get(mock_url)
         
+    assert response.status_code == 200
+    
     # Capture printed output to verify the interceptor caught it
     captured = capsys.readouterr()
     assert "402 Paywall detected!" in captured.out
