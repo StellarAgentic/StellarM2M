@@ -250,14 +250,10 @@ sequenceDiagram
   - ✅ Project scaffolding with `uv` complete
   - ✅ Initial `AgentWallet` class structure defined
   - ✅ Keypair generation and balance querying tested
+  - ✅ **PaywallInterceptor Middleware** (Detects 402s, pays via wallet, and auto-retries requests)
 
 ### 🔥 Active Development Areas (Help Wanted!)
 We are currently building out the core infrastructure and need help with:
-
-[ ] **PaywallInterceptor Middleware** 🛡️
-   - [ ] Implement `httpx` middleware to detect 402 Payment Required errors
-   - [ ] Automatic retry logic after payment
-   - *Skills: Python, httpx, async programming*
 
 [ ] **Transaction Building** 💸
    - [ ] Implement the actual Stellar transaction submission in `AgentWallet.pay()`
@@ -267,6 +263,11 @@ We are currently building out the core infrastructure and need help with:
 [ ] **Rate Limiting & Safety Controls** 🚦
    - [ ] Build per-merchant spending limits to prevent agent overspending
    - *Skills: Python, Security design*
+
+[ ] **Developer CLI Tools** 💻
+   - [ ] Build the `stellar-agent` command-line interface
+   - [ ] Implement `stellar-agent fund` to top up wallets from the terminal
+   - *Skills: Python, Click/Typer, CLI Design*
 
 **👉 Ready to contribute?** Check our [Issues](https://github.com/StellarAgentic/stellar-m2m/issues) page for tasks tagged by difficulty level.
 
@@ -311,11 +312,11 @@ stellar-m2m/
   - ✅ Add native Stellar SDK balance querying capabilities
   - ✅ Build cryptographic transaction signing functionality
 
-[ ] **`PaywallInterceptor` Middleware (402 Handling)**
-  - [ ] Intercept out-bound HTTP requests from AI Agents
-  - [ ] Detect `402 Payment Required` HTTP response headers
-  - [ ] Extract payment amounts and destination addresses
-  - [ ] Automatically retry original requests upon successful payment
+[x] **`PaywallInterceptor` Middleware (402 Handling)**
+  - [x] Intercept out-bound HTTP requests from AI Agents
+  - [x] Detect `402 Payment Required` HTTP response headers
+  - [x] Extract payment amounts and destination addresses
+  - [x] Automatically retry original requests upon successful payment
 
 [ ] **Automatic Testnet Funding**
   - [ ] Integrate with the Stellar Friendbot API
