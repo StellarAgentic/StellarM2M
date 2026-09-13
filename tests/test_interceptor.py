@@ -30,7 +30,8 @@ def test_mock_merchant_402_response(httpx_mock: HTTPXMock):
     assert response.headers[HEADER_PAYMENT_DESTINATION] == "GBOQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQ"
 
 
-def test_interceptor_detects_402(httpx_mock: HTTPXMock, capsys):
+@pytest.mark.asyncio
+async def test_interceptor_detects_402(httpx_mock: HTTPXMock, capsys, monkeypatch):
     """
     Test that PaywallInterceptor correctly yields the request, reads the 402 status code,
     and prints the debug message.
@@ -47,10 +48,48 @@ def test_interceptor_detects_402(httpx_mock: HTTPXMock, capsys):
         }
     )
     
+    class MockWallet:
+        async def pay(self, amount, destination):
+            return "mock_tx_hash"
+            
     # Make a request using the client WITH the interceptor attached
-    with httpx.Client(auth=PaywallInterceptor()) as client:
-        client.get(mock_url)
+    async with httpx.AsyncClient(auth=PaywallInterceptor(wallet=MockWallet())) as client:
+        await client.get(mock_url)
         
     # Capture printed output to verify the interceptor caught it
     captured = capsys.readouterr()
     assert "402 Paywall detected!" in captured.out
+
+
+@pytest.mark.asyncio
+async def test_interceptor_handles_failed_payment(httpx_mock: HTTPXMock, capsys, monkeypatch):
+    """
+    Test that PaywallInterceptor catches payment exceptions and returns the 402 response.
+    """
+    mock_url = "https://api.mock-merchant.com/data"
+    
+    # Configure the mock to return 402
+    httpx_mock.add_response(
+        url=mock_url,
+        status_code=402,
+        headers={
+            HEADER_PAYMENT_AMOUNT: "5.0",
+            HEADER_PAYMENT_DESTINATION: "GBOQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQYQ"
+        }
+    )
+    
+    # Create a mock AgentWallet that raises an Exception on pay
+    class MockWallet:
+        async def pay(self, amount, destination):
+            raise Exception("Insufficient funds")
+            
+    # Make a request using the client WITH the interceptor attached
+    # httpx.AsyncClient is required for async_auth_flow
+    async with httpx.AsyncClient(auth=PaywallInterceptor(wallet=MockWallet())) as client:
+        response = await client.get(mock_url)
+        
+    assert response.status_code == 402
+    
+    # Capture printed output to verify the interceptor caught it
+    captured = capsys.readouterr()
+    assert "Warning: Payment failed: Insufficient funds" in captured.out

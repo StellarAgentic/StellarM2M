@@ -21,11 +21,13 @@ class PaywallInterceptor(httpx.Auth):
             print("402 Paywall detected!")
             from stellar_m2m.parsers import (
                 extract_payment_amount,
-                extract_payment_destination,
-                validate_merchant_headers
+                extract_payment_destination
             )
-            validate_merchant_headers(response.headers)
-            amount = extract_payment_amount(response.headers)
-            destination = extract_payment_destination(response.headers)
+            amount = extract_payment_amount(response)
+            destination = extract_payment_destination(response)
             
-            tx_hash = await self.wallet.pay(amount, destination)
+            try:
+                tx_hash = await self.wallet.pay(amount, destination)
+            except Exception as e:
+                print(f"Warning: Payment failed: {e}")
+                return
