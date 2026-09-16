@@ -63,7 +63,8 @@ print(response.json())
 ## Why This Exists (The Problem & Solution)
 
 ### The Problem: AI Agents have no bank accounts
-AI agents are becoming incredibly autonomous, but they hit a brick wall when interacting with the real world: they cannot hold credit cards or pass KYC checks to pay for premium APIs, data sets, or computation. Currently, if an AI agent hits a paywall, it crashes.
+AI agents are becoming incredibly autonomous, but they hit a brick wall when interacting with the real world: they cannot hold credit cards or pass KYC checks to pay for premium APIs, data sets, or computation. Currently, if an AI agent hits a paywall, it crashes. To achieve true autonomy AI Agents need to be able to pay for APIs and compute without human intervention.
+
 
 ### The Solution: A Two-Sided Agentic Economy
 We are building the foundational infrastructure for **Agentic Commerce** on Stellar. This goes beyond a simple Python wrapper:
